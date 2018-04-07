@@ -3,5 +3,8 @@ dogImages/
 lfw/
 saved_models/weights.best.from_scratch.hdf5
 saved_models/weights.best.vgg16.hdf5
+saved_models/weights.best.vgg19.hdf5
+saved_models/weights.best.fine.hdf5
 .ipynb_checkpoints/
 bottleneck_features/DogVGG16Data.npz
+bottlenect_features/DogVGG19Data.npz
