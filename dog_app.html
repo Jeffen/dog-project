@@ -11951,7 +11951,7 @@ There are 836 test dog images.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>                
@@ -12160,7 +12160,7 @@ We detected 12 human faces in 100 dog photos.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.applications.resnet50</span> <span class="k">import</span> <span class="n">ResNet50</span>
@@ -12198,7 +12198,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="k">import</span> <span class="n">image</span>                  
@@ -12235,7 +12235,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.applications.resnet50</span> <span class="k">import</span> <span class="n">preprocess_input</span><span class="p">,</span> <span class="n">decode_predictions</span>
@@ -12263,7 +12263,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### returns &quot;True&quot; if a dog is detected in the image stored at img_path</span>
@@ -12398,7 +12398,7 @@ We detected 100 dogs in 100 dog photos.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">ImageFile</span>                            
@@ -12424,9 +12424,9 @@ We detected 100 dogs in 100 dog photos.
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>100%|██████████| 6680/6680 [00:55&lt;00:00, 120.85it/s]
-100%|██████████| 835/835 [00:06&lt;00:00, 135.20it/s]
-100%|██████████| 836/836 [00:06&lt;00:00, 136.50it/s]
+<pre>100%|██████████| 6680/6680 [00:54&lt;00:00, 122.14it/s]
+100%|██████████| 835/835 [00:06&lt;00:00, 134.15it/s]
+100%|██████████| 836/836 [00:06&lt;00:00, 135.83it/s]
 </pre>
 </div>
 </div>
@@ -12448,13 +12448,16 @@ We detected 100 dogs in 100 dog photos.
 <p><img src="images/sample_cnn.png" alt="Sample CNN"></p>
 <p><strong>Question 4:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>I choose the CNN architecture above and concat it with a fullly connected layer and a dropout layer. I want to make our CNN deep in the 4th dimention so 3 or more layers would be reasonable. More layers also requires more computation. For fully connected layer, I added a dropout layer to prevent overfitting. And use flatten is because I find it has better performance compared to globalAveragePooling in this case.</li>
+</ul>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">GlobalAveragePooling2D</span>
@@ -12500,17 +12503,17 @@ Layer (type)                 Output Shape              Param #
 =================================================================
 conv2d_1 (Conv2D)            (None, 224, 224, 16)      208       
 _________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 112, 112, 16)      0         
+max_pooling2d_1 (MaxPooling2 (None, 112, 112, 16)      0         
 _________________________________________________________________
 conv2d_2 (Conv2D)            (None, 112, 112, 32)      2080      
 _________________________________________________________________
-max_pooling2d_3 (MaxPooling2 (None, 56, 56, 32)        0         
+max_pooling2d_2 (MaxPooling2 (None, 56, 56, 32)        0         
 _________________________________________________________________
 conv2d_3 (Conv2D)            (None, 56, 56, 64)        8256      
 _________________________________________________________________
-max_pooling2d_4 (MaxPooling2 (None, 28, 28, 64)        0         
+max_pooling2d_3 (MaxPooling2 (None, 28, 28, 64)        0         
 _________________________________________________________________
-flatten_2 (Flatten)          (None, 50176)             0         
+flatten_1 (Flatten)          (None, 50176)             0         
 _________________________________________________________________
 dense_1 (Dense)              (None, 500)               25088500  
 _________________________________________________________________
@@ -13077,7 +13080,7 @@ Epoch 00020: val_loss improved from 6.31127 to 6.23199, saving model to saved_mo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">extract_bottleneck_features</span> <span class="k">import</span> <span class="o">*</span>
@@ -13128,7 +13131,7 @@ test_{network} = bottleneck_features['test']</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Obtain bottleneck features from another pre-trained CNN.</span>
@@ -13154,13 +13157,16 @@ test_{network} = bottleneck_features['test']</code></pre>
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
 <p><strong>Answer:</strong></p>
+<ul>
+<li>In order to connect to image training CNN, we need to add either GlobalAveragePooling2D, GlobalMaxPooling2D or Flatten layer. I choose GlobalAveragePooling2D is because it is usually cheaper than Flatten when you don't have much data. Then I added a Dropout layer to prevent overfitting. I don't want have more than 2 hidden layer because in most cases, it will not improve accuracy and also cause gradient vanishing problem.</li>
+</ul>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Define your architecture.</span>
@@ -13220,11 +13226,26 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Compile the model.</span>
 <span class="n">VGG19_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;rmsprop&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fine-tuning model</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">optimizers</span>
+<span class="n">VGG19_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">),</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -13244,7 +13265,7 @@ _________________________________________________________________
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Train the model.</span>
@@ -13253,7 +13274,7 @@ _________________________________________________________________
 
 <span class="n">VGG19_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_VGG19</span><span class="p">,</span> <span class="n">train_targets</span><span class="p">,</span> 
           <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">valid_VGG19</span><span class="p">,</span> <span class="n">valid_targets</span><span class="p">),</span>
-          <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13271,59 +13292,29 @@ _________________________________________________________________
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 6680 samples, validate on 835 samples
-Epoch 1/20
-6680/6680 [==============================] - 2s 235us/step - loss: 0.6471 - acc: 0.8853 - val_loss: 1.7381 - val_acc: 0.7856
-Epoch 2/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6399 - acc: 0.8957 - val_loss: 1.7652 - val_acc: 0.7940
-Epoch 3/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6755 - acc: 0.8885 - val_loss: 1.7307 - val_acc: 0.7844
-Epoch 4/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6145 - acc: 0.8952 - val_loss: 1.8396 - val_acc: 0.7868
-Epoch 5/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6614 - acc: 0.8940 - val_loss: 1.7685 - val_acc: 0.7904
-Epoch 6/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6804 - acc: 0.8904 - val_loss: 1.7337 - val_acc: 0.7784
-Epoch 7/20
-6680/6680 [==============================] - 2s 236us/step - loss: 0.6545 - acc: 0.8990 - val_loss: 1.9312 - val_acc: 0.7701
-Epoch 8/20
-6680/6680 [==============================] - 2s 233us/step - loss: 0.5903 - acc: 0.9027 - val_loss: 1.7483 - val_acc: 0.7772
-Epoch 9/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6457 - acc: 0.8957 - val_loss: 1.8231 - val_acc: 0.7856
-Epoch 10/20
-6680/6680 [==============================] - 2s 235us/step - loss: 0.5673 - acc: 0.9016 - val_loss: 1.8610 - val_acc: 0.7808
-Epoch 11/20
-6680/6680 [==============================] - 2s 235us/step - loss: 0.6324 - acc: 0.8966 - val_loss: 1.8207 - val_acc: 0.7940
-Epoch 12/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6704 - acc: 0.8994 - val_loss: 2.0071 - val_acc: 0.7832
-Epoch 13/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.6679 - acc: 0.8951 - val_loss: 2.0021 - val_acc: 0.7820
-Epoch 14/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.5876 - acc: 0.9027 - val_loss: 2.0838 - val_acc: 0.7820
-Epoch 15/20
-6680/6680 [==============================] - 2s 236us/step - loss: 0.6040 - acc: 0.9022 - val_loss: 1.9125 - val_acc: 0.7880
-Epoch 16/20
-6680/6680 [==============================] - 2s 235us/step - loss: 0.5940 - acc: 0.9103 - val_loss: 1.9442 - val_acc: 0.7820
-Epoch 17/20
-6680/6680 [==============================] - 2s 233us/step - loss: 0.6129 - acc: 0.9072 - val_loss: 2.0526 - val_acc: 0.7820
-Epoch 18/20
-6680/6680 [==============================] - 2s 235us/step - loss: 0.5798 - acc: 0.9105 - val_loss: 1.9051 - val_acc: 0.7844
-Epoch 19/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.5885 - acc: 0.9118 - val_loss: 2.0512 - val_acc: 0.7737
-Epoch 20/20
-6680/6680 [==============================] - 2s 234us/step - loss: 0.5958 - acc: 0.9096 - val_loss: 2.0177 - val_acc: 0.7868
+Epoch 1/5
+6680/6680 [==============================] - 1s 75us/step - loss: 0.1384 - acc: 0.9530 - val_loss: 0.7428 - val_acc: 0.7940
+Epoch 2/5
+6680/6680 [==============================] - 1s 76us/step - loss: 0.1140 - acc: 0.9624 - val_loss: 0.7393 - val_acc: 0.7964
+Epoch 3/5
+6680/6680 [==============================] - 1s 79us/step - loss: 0.1038 - acc: 0.9675 - val_loss: 0.7337 - val_acc: 0.7964
+Epoch 4/5
+6680/6680 [==============================] - 1s 80us/step - loss: 0.1035 - acc: 0.9678 - val_loss: 0.7271 - val_acc: 0.7988
+Epoch 5/5
+6680/6680 [==============================] - 1s 78us/step - loss: 0.1077 - acc: 0.9656 - val_loss: 0.7392 - val_acc: 0.7880
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[52]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;keras.callbacks.History at 0x7fefee4d4d68&gt;</pre>
+<pre>&lt;keras.callbacks.History at 0x7efe677802b0&gt;</pre>
 </div>
 
 </div>
@@ -13342,7 +13333,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Load the model weights with the best validation loss.</span>
@@ -13365,7 +13356,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Calculate classification accuracy on the test dataset.</span>
@@ -13392,7 +13383,7 @@ Epoch 20/20
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test accuracy: 78.1100%
+<pre>Test accuracy: 80.2632%
 </pre>
 </div>
 </div>
@@ -13403,7 +13394,206 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># After went through some kaggle competition, I found Xception might have a better performance.</span>
+<span class="c1"># So I want to give it a try</span>
+<span class="n">bottleneck_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;bottleneck_features/DogXceptionData.npz&#39;</span><span class="p">)</span>
+<span class="n">train_Xception</span> <span class="o">=</span> <span class="n">bottleneck_features</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span>
+<span class="n">valid_Xception</span> <span class="o">=</span> <span class="n">bottleneck_features</span><span class="p">[</span><span class="s1">&#39;valid&#39;</span><span class="p">]</span>
+<span class="n">test_Xception</span> <span class="o">=</span> <span class="n">bottleneck_features</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xception_model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalAveragePooling2D</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="n">train_Xception</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+global_average_pooling2d_2 ( (None, 2048)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 1024)              2098176   
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 1024)              0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 133)               136325    
+=================================================================
+Total params: 2,234,501
+Trainable params: 2,234,501
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[120]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xception_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">),</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[137]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;saved_models/weights.best.Xception.hdf5&#39;</span><span class="p">,</span> 
+                               <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">Xception_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_Xception</span><span class="p">,</span> <span class="n">train_targets</span><span class="p">,</span> 
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">valid_Xception</span><span class="p">,</span> <span class="n">valid_targets</span><span class="p">),</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpointer</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Train on 6680 samples, validate on 835 samples
+Epoch 1/10
+6680/6680 [==============================] - 2s 260us/step - loss: 0.6236 - acc: 0.8340 - val_loss: 0.5952 - val_acc: 0.8491
+Epoch 2/10
+6680/6680 [==============================] - 2s 258us/step - loss: 0.6250 - acc: 0.8371 - val_loss: 0.5939 - val_acc: 0.8467
+Epoch 3/10
+6680/6680 [==============================] - 2s 260us/step - loss: 0.6095 - acc: 0.8409 - val_loss: 0.5921 - val_acc: 0.8467
+Epoch 4/10
+6680/6680 [==============================] - 2s 260us/step - loss: 0.6182 - acc: 0.8364 - val_loss: 0.5905 - val_acc: 0.8467
+Epoch 5/10
+6680/6680 [==============================] - 2s 260us/step - loss: 0.6080 - acc: 0.8380 - val_loss: 0.5889 - val_acc: 0.8443
+Epoch 6/10
+6680/6680 [==============================] - 2s 260us/step - loss: 0.6160 - acc: 0.8374 - val_loss: 0.5873 - val_acc: 0.8443
+Epoch 7/10
+6680/6680 [==============================] - 2s 259us/step - loss: 0.6091 - acc: 0.8416 - val_loss: 0.5857 - val_acc: 0.8467
+Epoch 8/10
+6680/6680 [==============================] - 2s 261us/step - loss: 0.6037 - acc: 0.8470 - val_loss: 0.5845 - val_acc: 0.8467
+Epoch 9/10
+6680/6680 [==============================] - 2s 259us/step - loss: 0.6146 - acc: 0.8344 - val_loss: 0.5832 - val_acc: 0.8443
+Epoch 10/10
+6680/6680 [==============================] - 2s 259us/step - loss: 0.5978 - acc: 0.8428 - val_loss: 0.5821 - val_acc: 0.8455
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[137]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;keras.callbacks.History at 0x7efe5a773550&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xception_model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s1">&#39;saved_models/weights.best.Xception.hdf5&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[139]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xception_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Xception_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">test_Xception</span><span class="p">]</span>
+
+<span class="c1"># report test accuracy</span>
+<span class="n">test_accuracy</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Xception_predictions</span><span class="p">)</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">test_targets</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Xception_predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test accuracy: </span><span class="si">%.4f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">test_accuracy</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Test accuracy: 83.7321%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fine-tuning model</span>
@@ -13450,7 +13640,7 @@ Epoch 20/20
 <pre>_________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-input_4 (InputLayer)         (None, None, None, 3)     0         
+input_1 (InputLayer)         (None, None, None, 3)     0         
 _________________________________________________________________
 block1_conv1 (Conv2D)        (None, None, None, 64)    1792      
 _________________________________________________________________
@@ -13674,7 +13864,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s1">&#39;saved_models/weights.best.fine.hdf5&#39;</span><span class="p">)</span>
@@ -13741,7 +13931,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Write a function that takes a path to an image as input</span>
@@ -13753,6 +13943,14 @@ Epoch 20/20
     <span class="n">bottleneck_feature</span> <span class="o">=</span> <span class="n">extract_VGG19</span><span class="p">(</span><span class="n">path_to_tensor</span><span class="p">(</span><span class="n">img_path</span><span class="p">))</span>
     <span class="c1"># obtain predicted vector</span>
     <span class="n">predicted_vector</span> <span class="o">=</span> <span class="n">VGG19_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">bottleneck_feature</span><span class="p">)</span>
+    <span class="c1"># return dog breed that is predicted by the model</span>
+    <span class="k">return</span> <span class="n">dog_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predicted_vector</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">Xception_predict_breed</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
+    <span class="c1"># extract bottleneck features</span>
+    <span class="n">bottleneck_feature</span> <span class="o">=</span> <span class="n">extract_Xception</span><span class="p">(</span><span class="n">path_to_tensor</span><span class="p">(</span><span class="n">img_path</span><span class="p">))</span>
+    <span class="c1"># obtain predicted vector</span>
+    <span class="n">predicted_vector</span> <span class="o">=</span> <span class="n">Xception_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">bottleneck_feature</span><span class="p">)</span>
     <span class="c1"># return dog breed that is predicted by the model</span>
     <span class="k">return</span> <span class="n">dog_names</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predicted_vector</span><span class="p">)]</span>
 
@@ -13791,7 +13989,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### TODO: Write your algorithm.</span>
@@ -13804,6 +14002,7 @@ Epoch 20/20
 <span class="k">def</span> <span class="nf">detect_breed</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
     <span class="n">species</span> <span class="o">=</span> <span class="s2">&quot;human&quot;</span> <span class="k">if</span> <span class="n">face_detector</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;dog&quot;</span> <span class="k">if</span> <span class="n">dog_detector</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;unknown&quot;</span>
     <span class="n">VGG19_breed</span> <span class="o">=</span> <span class="n">VGG19_predict_breed</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="n">Xception_breed</span> <span class="o">=</span> <span class="n">Xception_predict_breed</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
     <span class="n">fine_breed</span> <span class="o">=</span> <span class="n">fine_predict_breed</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">species</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">species</span> <span class="o">!=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">:</span>
@@ -13811,6 +14010,7 @@ Epoch 20/20
         <span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fine model detected breed is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fine_breed</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Xception model detected breed is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Xception_breed</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VGG19 model detected breed is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">VGG19_breed</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please upload a human or dog photo&quot;</span><span class="p">)</span>
@@ -13841,7 +14041,7 @@ Epoch 20/20
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## TODO: Execute your algorithm from Step 6 on</span>
@@ -13906,7 +14106,8 @@ Hello, human
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is American_staffordshire_terrier
-VGG19 model detected breed is Pharaoh_hound
+Xception model detected breed is Bulldog
+VGG19 model detected breed is Papillon
 -------------------------------------------
 gordon.jpg
 Hello, human
@@ -13936,6 +14137,7 @@ Hello, human
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is American_staffordshire_terrier
+Xception model detected breed is Chinese_crested
 VGG19 model detected breed is Chinese_crested
 -------------------------------------------
 Chow_Chow.jpg
@@ -13966,6 +14168,7 @@ Hello, dog
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is Chow_chow
+Xception model detected breed is Chow_chow
 VGG19 model detected breed is Chow_chow
 -------------------------------------------
 unknown.jpg
@@ -14000,6 +14203,7 @@ Hello, dog
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is Flat-coated_retriever
+Xception model detected breed is Flat-coated_retriever
 VGG19 model detected breed is Flat-coated_retriever
 -------------------------------------------
 putin.jpg
@@ -14030,7 +14234,8 @@ Hello, human
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is American_staffordshire_terrier
-VGG19 model detected breed is Xoloitzcuintli
+Xception model detected breed is Afghan_hound
+VGG19 model detected breed is Border_collie
 -------------------------------------------
 Bedlington-Terrier.jpg
 Hello, dog
@@ -14060,6 +14265,7 @@ Hello, dog
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is Bedlington_terrier
+Xception model detected breed is Bedlington_terrier
 VGG19 model detected breed is Bedlington_terrier
 -------------------------------------------
 taylor_swift.jpg
@@ -14090,7 +14296,8 @@ Hello, human
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fine model detected breed is Papillon
-VGG19 model detected breed is Ibizan_hound
+Xception model detected breed is Chinese_crested
+VGG19 model detected breed is Japanese_chin
 -------------------------------------------
 </pre>
 </div>
@@ -14098,7 +14305,7 @@ VGG19 model detected breed is Ibizan_hound
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[90]:</div>
+<div class="prompt output_prompt">Out[28]:</div>
 
 
 
